@@ -1,0 +1,10 @@
+#!/usr/bin/env Rscript
+library("bc3net")
+merged<-read.delim("index/uniqueIndexed.m.SampleID.tsv",check.names=F)
+tdata<-t(data.matrix(merged))
+print("1")
+gbc3net<-bc3net(tdata,estimator="spearman",boot=1000)
+print("2")
+gc3mtc<-c3mtc(tdata,estimator="spearman")
+print("3")
+save.image(file = "bc3net.RData")
